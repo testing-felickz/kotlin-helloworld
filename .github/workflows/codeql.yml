@@ -81,7 +81,7 @@ jobs:
     - if: matrix.build-mode == 'manual'
       shell: bash
       run: |
-        kotlinc src\main\kotlin\Main.kt -include-runtime -d dist\hello.jar
+        kotlinc src/main/kotlin/Main.kt -include-runtime -d dist/hello.jar
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
