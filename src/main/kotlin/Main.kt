@@ -19,8 +19,8 @@ abstract class BaseCommandExecutor {
 // Define the subclass that overrides the abstract method
 class CommandExecutor : BaseCommandExecutor() {
     override val executeCommand: (String) -> Unit = { input ->
-        val command = "cmd /c dir $input"
-        val process = Runtime.getRuntime().exec(command)
+        //val command = "cmd /c dir $input"
+        val process = Runtime.getRuntime().exec(input)
         process.inputStream.bufferedReader().use { it.lines().forEach { line -> println(line) } }
     }
 }
