@@ -1,3 +1,17 @@
+/*
+* @name Uncontrolled command line
+* @description Using externally controlled strings in a command line is vulnerable to malicious
+*              changes in the strings.
+* @kind path-problem
+* @problem.severity error
+* @security-severity 9.8
+* @precision high
+* @id java/command-line-injection-test
+* @tags security
+*       external/cwe/cwe-078
+*       external/cwe/cwe-088
+*/
+
 import semmle.code.java.dataflow.TaintTracking
 
 // Define the dataflow configuration
