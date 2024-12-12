@@ -39,7 +39,12 @@ module TestCommInjConfig implements DataFlow::ConfigSig
 }
 
 module TestCommInjFlow = TaintTracking::Global<TestCommInjConfig>;
+import TestCommInjFlow::PathGraph
 
-from DataFlow::Node src, DataFlow::Node sink
-where TestCommInjFlow::flow(src, sink)
-select src, "This input passes to a critical method", sink, "here"
+from TestCommInjFlow::PathNode src, TestCommInjFlow::PathNode sink
+where TestCommInjFlow::flowPath(src, sink)
+select src.getNode(), src, sink, "This command line depends on a $@.", src.getNode(),    "possible user-provided value"
+
+//from DataFlow::Node src, DataFlow::Node sink
+//where TestCommInjFlow::flow(src, sink)
+//select src, "This input passes to a critical method", sink, "here"
