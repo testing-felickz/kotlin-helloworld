@@ -1,0 +1,7 @@
+name: codeql/my-java-queries
+version: 0.0.1
+groups: java
+extractor: java
+dependencies:
+    codeql/java-all: "*"
+    codeql/suite-helpers: "*"
