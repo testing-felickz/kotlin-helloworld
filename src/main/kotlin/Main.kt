@@ -8,7 +8,9 @@ fun main(args: Array<String>) {
 
     // Create an instance of the subclass and invoke the lambda function
     val commandExecutor = CommandExecutor()
-    commandExecutor.executeCommand(input)
+    
+    //Simulate not invoking the method - can we use CodeQL to detect any existance of the method as vulnerable?
+    //commandExecutor.executeCommand(input)
 }
 
 // Define the base class with an abstract method
@@ -19,8 +21,8 @@ abstract class BaseCommandExecutor {
 // Define the subclass that overrides the abstract method
 class CommandExecutor : BaseCommandExecutor() {
     override val executeCommand: (String) -> Unit = { input ->
-        //val command = "cmd /c dir $input"
-        val process = Runtime.getRuntime().exec(input)
+        val command = "cmd /c dir $input"
+        val process = Runtime.getRuntime().exec(command)
         process.inputStream.bufferedReader().use { it.lines().forEach { line -> println(line) } }
     }
 }
